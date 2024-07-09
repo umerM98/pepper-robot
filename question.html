@@ -22,18 +22,34 @@
 </head>
 <body>
     <h2>May I take your pictures to remember you in future?</h2>
-    <button id="yes" class="button">Yes</button>
-    <button id="no" class="button">No</button>
+    <form id="permission-form">
+        <button type="button" id="yes" class="button">Yes</button>
+        <button type="button" id="no" class="button">No</button>
+    </form>
 
     <script>
         document.getElementById('yes').addEventListener('click', function() {
-            // Implement the action for Yes. For example, send a signal to your application.
-            alert('Yes was clicked');
+            fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ input_data: 'yes' })
+            })
+            .then(response => response.text())
+            .then(data => console.log(data));
         });
 
         document.getElementById('no').addEventListener('click', function() {
-            // Implement the action for No. For example, send a signal to your application.
-            alert('No was clicked');
+            fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ input_data: 'no' })
+            })
+            .then(response => response.text())
+            .then(data => console.log(data));
         });
     </script>
 </body>
