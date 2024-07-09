@@ -37,7 +37,10 @@
                 body: JSON.stringify({ input_data: 'yes' }),
             })
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data);
+                alert(`Response: ${JSON.stringify(data)}`);
+            })
             .catch((error) => console.error('Error:', error));
         });
 
@@ -49,8 +52,12 @@
                 },
                 body: JSON.stringify({ input_data: 'no' })
             })
-            .then(response => response.text())
-            .then(data => console.log(data));
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                alert(`Response: ${JSON.stringify(data)}`);
+            })
+            .catch((error) => console.error('Error:', error));
         });
     </script>
 </body>
