@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Enter Name</title>
-    <script type="text/javascript">
-        function submitName() {
-            var name = document.getElementById("nameInput").value;
-            ALTabletBinding.raiseEvent(name);
-        }
-    </script>
+    <title>Pepper Robot Input Form</title>
 </head>
 <body>
-    <h1>Please enter the name of the person whose face is to be learned</h1>
-    <form onsubmit="submitName(); return false;">
-        <input type="text" id="nameInput" name="name" placeholder="Enter Name Here">
-        <input type="submit" value="Submit">
+    <h1>Input Form for Pepper Robot</h1>
+    <form action="http://192.168.0.135:5000/submit" method="post">
+        <label for="input_data">Please enter the name of the person whose face is to be learned:</label>
+        <input type="text" id="input_data" name="input_data">
+        <button type="submit">Submit</button>
     </form>
 </body>
 </html>
