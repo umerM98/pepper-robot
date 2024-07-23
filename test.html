@@ -1,47 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Pepper Robot Input Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pepper Robot Display</title>
     <style>
-        body {
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-family: Arial, sans-serif;
-            margin: 20px;
         }
-        form {
-            margin-top: 20px;
-        }
-        label, input, button {
-            display: block;
-            margin-bottom: 10px;
-        }
-        input, button {
-            padding: 10px;
-        }
-        #response {
-            margin-top: 20px;
-            color: green;
+        .container {
+            text-align: center;
+            width: 246px;
+            height: 175px;
+            border: 1px solid #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
 <body>
-    <h1>Input Form for Pepper Robot</h1>
-    <form action="http://198.18.0.1:5000/submit" method="post">
-        <label for="input_data">Please enter the name of the person whose face is to be learned:</label>
-        <input type="text" id="input_data" name="input_data" required>
-        <button type="submit">Submit</button>
-    </form>
-    <div id="response"></div>
-    <script>
-        document.querySelector('form').onsubmit = function(event) {
-            event.preventDefault(); // Prevent the form from submitting the traditional way
-            var formData = new FormData(this);
-            fetch(this.action, {
-                method: 'POST',
-                body: formData
-            }).then(response => response.text())
-              .then(text => document.getElementById('response').innerText = text)
-              .catch(error => console.error('Error:', error));
-        };
-    </script>
+    <div class="container">
+        <p>Please enter the name of the person whose face is to be learned:</p>
+    </div>
 </body>
 </html>
