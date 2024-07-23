@@ -2,6 +2,26 @@
 <html>
 <head>
     <title>Pepper Robot Input Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        label, input, button {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input, button {
+            padding: 10px;
+        }
+        #response {
+            margin-top: 20px;
+            color: green;
+        }
+    </style>
 </head>
 <body>
     <h1>Input Form for Pepper Robot</h1>
@@ -10,5 +30,18 @@
         <input type="text" id="input_data" name="input_data" required>
         <button type="submit">Submit</button>
     </form>
+    <div id="response"></div>
+    <script>
+        document.querySelector('form').onsubmit = function(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+            var formData = new FormData(this);
+            fetch(this.action, {
+                method: 'POST',
+                body: formData
+            }).then(response => response.text())
+              .then(text => document.getElementById('response').innerText = text)
+              .catch(error => console.error('Error:', error));
+        };
+    </script>
 </body>
 </html>
